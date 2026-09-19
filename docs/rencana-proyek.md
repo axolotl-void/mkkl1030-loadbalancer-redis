@@ -12,11 +12,14 @@
 | No | Nama | NIM | Peran dalam Proyek |
 |---|---|---|---|
 | 1 | Yogi Prasetya Sadewa | 23210060 | Ketua kelompok; berkas Docker Compose, konfigurasi Nginx, dan skenario pengujian kegagalan |
-| 2 | [Nama Anggota 2] | [NIM] | Aplikasi Flask dan titik akhir pemeriksaan kesehatan |
-| 3 | [Nama Anggota 3] | [NIM] | Konfigurasi Redis sebagai penyimpanan status bersama dan pengujian ketahanan data |
-| 4 | [Nama Anggota 4] | [NIM] | Penyiapan lingkungan Docker dan pembuatan berkas image |
-| 5 | [Nama Anggota 5] | [NIM] | Pengujian beban dan pencatatan hasil pengalihan trafik |
-| 6 | [Nama Anggota 6] | [NIM] | Dokumentasi, README, dan pengelolaan repository |
+| 2 | Asmarudin | 23210133 | Aplikasi Flask dan titik akhir pemeriksaan kesehatan |
+| 3 | Deski Taiza | 23210003 | Konfigurasi Redis sebagai penyimpanan status bersama dan pengujian ketahanan data |
+| 4 | Akhsanul Taqwim | 23210006 | Penyiapan lingkungan Docker dan pembuatan berkas image |
+| 5 | Wira | 23210045 | Pengujian beban dan pencatatan hasil pengalihan trafik |
+| 6 | Abadi | 23210004 | Penyusunan skrip pengujian kegagalan yang dapat dijalankan ulang |
+| 7 | Ferdyan Ardhani | 23210039 | Pencatatan dan pengolahan hasil pengujian beban menjadi tabel laporan |
+| 8 | Muhammad Iqbal | 23210142 | Pemeriksaan keamanan dasar: pemisahan jaringan container dan penanganan kredensial |
+| 9 | Meriandi Wahyu Kurniawan | [NIM] | Dokumentasi, README, dan pengelolaan repository |
 
 ## 2. Masalah dan Tujuan
 
@@ -85,12 +88,14 @@ Layanan yang hanya berjalan pada satu proses akan berhenti sepenuhnya ketika pro
 
 | Bagian yang dijanjikan selesai | Bentuk bukti pada Pertemuan 8 | Penanggung jawab |
 |---|---|---|
-| Seluruh container berjalan dan klien dapat mengakses layanan melalui load balancer | Keluaran docker compose ps dan tangkapan layar respons pertama | Anggota 4 |
-| App server mengembalikan identitasnya dan penghitung permintaan tersimpan di Redis | Respons berisi identitas app server dan isi kunci penghitung pada Redis | Anggota 2 |
+| Seluruh container berjalan dan klien dapat mengakses layanan melalui load balancer | Keluaran docker compose ps dan tangkapan layar respons pertama | Akhsanul Taqwim |
+| App server mengembalikan identitasnya dan penghitung permintaan tersimpan di Redis | Respons berisi identitas app server dan isi kunci penghitung pada Redis | Asmarudin |
 | Nginx membagi permintaan ke kedua app server dan memeriksa kesehatan secara berkala | Log Nginx yang memperlihatkan permintaan terbagi ke kedua app server | Yogi Prasetya Sadewa |
-| Percobaan pertama: salah satu app server dimatikan saat beban berjalan | Catatan waktu peralihan dan log Nginx yang menunjukkan pengalihan trafik | Anggota 5 |
-| Penyimpanan bersama menyimpan ulang data dan status tetap ada setelah restart | Hasil pembacaan status sebelum dan sesudah container Redis dimulai ulang | Anggota 3 |
-| Repository aktif: README, berkas Compose, dan riwayat commit | Riwayat commit mingguan dan tautan repository | Anggota 6 |
+| Percobaan pertama: salah satu app server dimatikan saat beban berjalan | Catatan waktu peralihan dan log Nginx yang menunjukkan pengalihan trafik | Wira |
+| Penyimpanan bersama menyimpan ulang data dan status tetap ada setelah restart | Hasil pembacaan status sebelum dan sesudah container Redis dimulai ulang | Deski Taiza |
+| Skrip pengujian kegagalan tersedia dan dapat dijalankan ulang oleh anggota lain | Berkas skrip pengujian beserta keluaran satu kali dijalankan | Abadi |
+| Hasil pengujian beban diolah menjadi tabel ringkasan untuk laporan | Tabel ringkasan hasil pengujian beban tinggi | Ferdyan Ardhani |
+| Repository aktif: README, berkas Compose, dan riwayat commit | Riwayat commit mingguan dan tautan repository | Meriandi Wahyu Kurniawan |
 
 ## 6. Rencana Pencapaian UAS (Pertemuan 16) dan Skenario Demonstrasi
 
