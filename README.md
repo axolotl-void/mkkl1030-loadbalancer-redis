@@ -48,26 +48,38 @@ docker compose ps
 
 ```bash
 # Perhatikan field "server" pada respons: bergantian antara app1 dan app2
-curl -s http://localhost/ | jq
+curl -s http://localhost:8080/ | jq
+# Header pembukti node mana yang melayani:
+curl -s -D- -o /dev/null http://localhost:8080/ | grep -i x-served-by
 ```
+
+> Port 8080 dipakai pada *host* karena port 80 sering sudah ditempati layanan
+> lain. Di dalam jaringan Docker, Nginx tetap mendengarkan port 80.
 
 ### 3. Menguji kegagalan satu app server
 
 ```bash
 docker compose stop app1
-curl -s http://localhost/ | jq   # harus tetap dijawab app2
+curl -s http://localhost:8080/ | jq   # harus tetap dijawab app2
 docker compose start app1
 ```
 
 ### 4. Menguji beban dan ketahanan status
 
 ```bash
-hey -n 1000 -c 50 http://localhost/
+hey -n 1000 -c 50 http://localhost:8080/
 docker compose restart redis
-curl -s http://localhost/state | jq
+curl -s http://localhost:8080/state | jq
 ```
 
-> Bagian yang belum selesai ditandai `TODO` beserta minggu pengerjaannya.
+### 5. Seluruh skenario uji kegagalan sekaligus
+
+```bash
+bash src/tests/uji_kegagalan.sh
+```
+
+Hasil setiap skenario beserta penjelasannya ada di
+[`docs/hasil-uji-kegagalan.md`](docs/hasil-uji-kegagalan.md).
 
 ## Struktur Repository
 
